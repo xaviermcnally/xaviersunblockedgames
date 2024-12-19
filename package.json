@@ -1,36 +1,44 @@
 {
   "name": "starlight",
-  "version": "1.1.0",
-  "description": "Ending Internet censorship.",
+  "private": true,
+  "version": "2.0.0",
   "type": "module",
-  "main": "index.js",
-  "dependencies": {
-    "@mercuryworkshop/bare-mux": "^1.1.2",
-    "@mercuryworkshop/epoxy-transport": "^1.1.0",
-    "@titaniumnetwork-dev/ultraviolet": "^3.1.2",
-    "ejs": "^3.1.10",
-    "express": "^4.18.2",
-    "express-ejs-layouts": "^2.5.1",
-    "http-proxy": "^1.18.1",
-    "nodemon": "^3.1.4",
-    "wisp-server-node": "^1.0.6",
-    "ws": "^8.16.0"
-  },
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js --ext *"
+    "dev": "vite --host",
+    "build": "vite build",
+    "start": "vite build && node index.js",
+    "lint": "eslint .",
+    "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Parcoil/starlight.git"
+  "dependencies": {
+    "chemicaljs": "^2.2.0",
+    "compression": "^1.7.4",
+    "express": "^4.21.1",
+    "fuse.js": "^7.0.0",
+    "http-proxy": "^1.18.1",
+    "lucide-react": "^0.454.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-icons": "^5.3.0",
+    "react-lazy-load-image-component": "^1.6.2",
+    "react-router-dom": "^6.27.0",
+    "recoil": "^0.7.7"
   },
-  "keywords": [
-    "proxy"
-  ],
-  "author": "Parcoil Network",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/Parcoil/starlight/issues"
-  },
-  "homepage": "https://github.com/Parcoil/starlight#readme"
+  "devDependencies": {
+    "@eslint/js": "^9.13.0",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.3",
+    "autoprefixer": "^10.4.20",
+    "daisyui": "^4.12.14",
+    "eslint": "^9.13.0",
+    "eslint-plugin-react": "^7.37.1",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.13",
+    "globals": "^15.11.0",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14",
+    "vite": "^5.4.9",
+    "vite-plugin-compression": "^0.5.1"
+  }
 }

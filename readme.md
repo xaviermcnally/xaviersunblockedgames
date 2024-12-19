@@ -1,5 +1,5 @@
 <div align=center>
-<img src="/public/assets/logo.png" width="100px" height="100px">
+<img src="/public/media/logo.svg" width="100px" height="100px">
   <h1>Starlight.</h1>
   <p>Ending internet censorship.</p>
   <p>The finest proxy.</p>
@@ -30,16 +30,24 @@
 
 # Self Deployment
 
+install pnpm
+
+```sh
+npm install -g pnpm
+```
+
 run install command:
 
 ```sh
- npm install
+ pnpm install
 ```
 
 run start command:
 
 ```sh
-npm start
+pnpm start
 ```
 
-## Starlight is now running at [localhost:8080](http://localhost:8080)
+## Starlight is now running at [localhost:8181](http://localhost:8181)
+
+### if you have any issues join the [Discord Server](https://dsc.gg/parcoil) and make a ticket
