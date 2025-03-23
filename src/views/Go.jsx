@@ -77,7 +77,7 @@ function Go() {
 
   return (
     <>
-      <div className="navbar bg-base-300 background-filter z-[2] relative transition-all">
+      <div className="navbar bg-base-300 background-filter z-2 relative transition-all">
         <div className="navbar-start gap-2 flex justify-end mr-5">
           <button className="btn btn-circle btn-primary" onClick={goBack}>
             <LuArrowLeft size={24} />
@@ -126,7 +126,7 @@ function Go() {
           ref={iframeRef}
           src={url}
           frameBorder="0"
-          className="w-full h-full z-[1] fixed"
+          className="w-full h-full z-1 fixed"
         ></iframe>
         <div className="flex items-center justify-center fixed top-0 left-0 right-0 bottom-0 flex-col">
           <span className="loading loading-spinner text-primary text-7xl w-16"></span>

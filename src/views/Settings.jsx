@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 import Atom from "../lib/Atom.js";
 import { BannerAd, NativeBannerAd } from "../components/Ad.jsx";
+import { LuInfo, LuSettings } from "react-icons/lu";
 
 function Settings() {
   const setTheme = useSetRecoilState(Atom);
@@ -61,8 +62,13 @@ function Settings() {
 
   return (
     <div className="flex flex-col justify-center items-center flex-wrap gap-3">
+      <LuSettings size={35} className="m-2" />
       <h1 className="text-3xl font-bold mb-3">Settings</h1>
       <BannerAd />
+      <div className="alert alert-info">
+        <LuInfo />
+        some themes are disabled or different due to a rework
+      </div>
       <div className="flex flex-wrap gap-4 justify-center">
         <Card title="Themes" description="Change the theme on Starlight.">
           <select
@@ -74,13 +80,23 @@ function Settings() {
             <option value="light">Light</option>
             <option value="youtube">Youtube</option>
             <option value="surfshark">Surfshark Blue</option>
-            <option value="mocha">Catppuccin Mocha</option>
-            <option value="macchiato">Catppuccin Macchiato</option>
-            <option value="latte">Catppuccin Latte</option>
-            <option value="frappe">Catppuccin Frappe</option>
+            <option value="mocha" disabled>
+              Catppuccin Mocha
+            </option>
+            <option value="macchiato" disabled>
+              Catppuccin Macchiato
+            </option>
+            <option value="latte" disabled>
+              Catppuccin Latte
+            </option>
+            <option value="frappe" disabled>
+              Catppuccin Frappe
+            </option>
             <option value="dark">Dark</option>
             <option value="cupcake">Cupcake</option>
-            <option value="lunaar">Lunaar</option>
+            <option value="lunaar" disabled>
+              Lunaar
+            </option>
             <option value="bumblebee">Bumblebee</option>
             <option value="emerald">Emerald</option>
             <option value="corporate">Corporate</option>
@@ -161,7 +177,7 @@ function Settings() {
 
 function Card({ title, description, children, E }) {
   return (
-    <div className="bg-base-300 p-4 w-[300px] h-[300px] rounded-btn flex flex-col flex-wrap">
+    <div className="bg-base-300 p-4 w-[300px] h-[300px] rounded-field flex flex-col flex-wrap">
       <div>
         <h2 className="text-2xl font-bold">{title}</h2>
         <p>{description}</p>

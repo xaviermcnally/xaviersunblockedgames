@@ -6,6 +6,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/opacity.css";
 import { BannerAd, NativeBannerAd } from "../components/Ad";
 import { useNavigate } from "react-router-dom";
+import { LuGamepad2 } from "react-icons/lu";
 
 function Games() {
   const navigate = useNavigate();
@@ -40,10 +41,11 @@ function Games() {
   return (
     <>
       <div className="flex flex-col justify-center items-center">
+        <LuGamepad2 size={35} className="m-2" />
         <h1 className="text-3xl font-bold">Games</h1>
         <input
           type="text"
-          className="input input-bordered mt-5 transition-width duration-300 w-[300px] focus:w-[320px] focus:input-primary"
+          className="input input-bordered mt-5 transition-width duration-300 w-[330px] focus:w-[355px] focus:input-primary input-lg text-center"
           placeholder={`Search ${games.length} Games`}
           value={searchTerm}
           onChange={handleOnSearch}
