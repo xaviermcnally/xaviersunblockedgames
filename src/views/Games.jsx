@@ -27,7 +27,7 @@ function Games() {
   async function handleClick(game) {
     if (game.proxy) {
       const encodedResult = await chemical.encode(game.url, {
-        service: "uv",
+        service: window.chemical.getStore("service") || "uv",
         autoHttps: true,
       });
       sessionStorage.setItem("lpurl", encodedResult);
@@ -70,7 +70,7 @@ function Games() {
                   effect="opacity"
                   height="200px"
                   onClick={() => handleClick(game)}
-                  className="rounded-3xl min-h-[200px] min-w-[200px] transition-all hover:scale-95
+                  className="rounded-3xl min-h-[200px] min-w-[200px] max-h-[200px] max-w-[200px] transition-all hover:scale-95
 "
                 />
                 <p className="mt-2 font-bold">{game.name}</p>

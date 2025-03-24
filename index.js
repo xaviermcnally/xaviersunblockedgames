@@ -5,7 +5,12 @@ import path from "node:path";
 import compression from "compression";
 
 const cdnProxy = httpProxy.createProxyServer();
-const [app, listen] = new ChemicalServer();
+const [app, listen] = new ChemicalServer({
+  default: 'uv',
+  uv: true,
+  scramjet: true,
+  rh: true
+});
 const port = process.env.PORT || 8181;
 
 app.disable("x-powered-by");

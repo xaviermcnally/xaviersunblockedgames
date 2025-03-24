@@ -10,6 +10,9 @@ function Settings() {
   const [searchEngine, setSearchEngine] = useState(
     localStorage.getItem("searchEngine") || "google"
   );
+  const [service, setService] = useState(
+    window.chemical.getStore("service")
+  )
 
   const handleThemeChange = (e) => {
     const newTheme = e.target.value;
@@ -21,7 +24,11 @@ function Settings() {
     setSelectedCloak(e.target.value);
     localStorage.setItem("cloak", e.target.value);
   };
-
+const handleServiceChange = (e) => {
+  setService(e.target.value);
+  chemical.setStore("service", e.target.value);
+  console.log(`changed and saved service to ${e.target.value}`);
+}
   const handleSearchEngineChange = (e) => {
     const newEngine = e.target.value;
     setSearchEngine(newEngine);
@@ -80,16 +87,16 @@ function Settings() {
             <option value="light">Light</option>
             <option value="youtube">Youtube</option>
             <option value="surfshark">Surfshark Blue</option>
-            <option value="mocha" disabled>
+            <option value="mocha" >
               Catppuccin Mocha
             </option>
-            <option value="macchiato" disabled>
+            <option value="macchiato" >
               Catppuccin Macchiato
             </option>
-            <option value="latte" disabled>
+            <option value="latte" >
               Catppuccin Latte
             </option>
-            <option value="frappe" disabled>
+            <option value="frappe" >
               Catppuccin Frappe
             </option>
             <option value="dark">Dark</option>
@@ -170,16 +177,30 @@ function Settings() {
             <option value="brave">Brave</option>
           </select>
         </Card>
+                <Card
+          title="Service"
+          new
+          description="Changes the service that Starlight uses"
+        >
+<select value={service} onChange={handleServiceChange} className="select select-bordered w-full" >
+    <option value="uv">Ultraviolet</option>
+    <option value="rh">Rammerhead</option>
+    <option value="scramjet">Scramjet</option>
+</select>
+        </Card>
       </div>
     </div>
   );
 }
 
-function Card({ title, description, children, E }) {
+function Card({ title, description, children, E, new: isNew }) {
   return (
-    <div className="bg-base-300 p-4 w-[300px] h-[300px] rounded-field flex flex-col flex-wrap">
+    <div className="bg-base-200 p-4 w-[300px] h-[300px] rounded-field flex flex-col flex-wrap border-2 border-base-300 ">
       <div>
-        <h2 className="text-2xl font-bold">{title}</h2>
+        <div className="flex items-center gap-2">
+          <h2 className="text-2xl font-bold">{title}</h2>
+          {isNew && <span className="badge badge-primary">NEW</span>}
+        </div>
         <p>{description}</p>
         <p className="text-red-600">{E}</p>
         <div className="justify-end pt-3">{children}</div>

@@ -12,33 +12,204 @@ layer(base);
   --rounded-badge: 1.9rem;
 }
 
+
 @plugin "daisyui/theme" {
   name: "youtube";
+  prefersdark: false;
+  color-scheme: "dark";
+  --color-base-100: oklch(27% 0.006 286.033);
+  --color-base-200: #0F0F0F;
+  --color-base-300: oklch(21% 0.006 285.885);
+  --color-base-content: oklch(98% 0.014 180.72);
+  --color-primary: oklch(57% 0.245 27.325);
+  --color-primary-content: oklch(98% 0.014 180.72);
+  --color-secondary: oklch(25% 0.092 26.042);
+  --color-secondary-content: oklch(97% 0.014 254.604);
+  --color-accent: oklch(0% 0 0);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(14% 0.005 285.823);
+  --color-neutral-content: oklch(98% 0.019 200.873);
+  --color-info: oklch(74% 0.16 232.661);
+  --color-info-content: oklch(29% 0.066 243.157);
+  --color-success: oklch(84% 0.238 128.85);
+  --color-success-content: oklch(27% 0.072 132.109);
+  --color-warning: oklch(82% 0.189 84.429);
+  --color-warning-content: oklch(27% 0.077 45.635);
+  --color-error: oklch(71% 0.202 349.761);
+  --color-error-content: oklch(28% 0.109 3.907);
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 2rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+
+
+@plugin "daisyui/theme" {
+  name: "mocha";
+  color-scheme: "dark";
+  --color-base-100: hsl(240deg, 21%, 15%);
+  --color-base-200: hsl(240deg, 21%, 12%);
+  --color-base-300: hsl(240deg, 23%, 9%);
+  --color-base-content: hsl(226deg, 64%, 88%);
+  --color-primary: hsl(267deg, 84%, 81%);
+  --color-primary-content: hsl(240deg, 21%, 15%);
+  --color-secondary: hsl(170deg, 57%, 73%);
+  --color-secondary-content: hsl(240deg, 21%, 15%);
+  --color-accent: hsl(189deg, 71%, 73%);
+  --color-accent-content: hsl(240deg, 21%, 15%);
+  --color-neutral: hsl(237deg, 16%, 23%);
+  --color-neutral-content: hsl(226deg, 64%, 88%);
+  --color-info: hsl(217deg, 92%, 76%);
+  --color-info-content: hsl(240deg, 23%, 9%);
+  --color-success: hsl(115deg, 54%, 76%);
+  --color-success-content: hsl(240deg, 23%, 9%);
+  --color-warning: hsl(23deg, 92%, 75%);
+  --color-warning-content: hsl(240deg, 23%, 9%);
+  --color-error: hsl(343deg, 81%, 75%);
+  --color-error-content: hsl(240deg, 23%, 9%);
+  --radius-selector: 0.5rem;
+  --radius-field: 1.0rem;
+  --radius-box: 0.7rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1.5px;
+  --depth: 0.125rem;
+  --noise: 0;
+
+}
+
+@plugin "daisyui/theme" {
+  name: "macchiato";
+  color-scheme: "dark";
+  --color-base-100: hsl(232deg, 19%, 18%);
+  --color-base-200: hsl(232deg, 19%, 15%);
+  --color-base-300: hsl(232deg, 21%, 12%);
+  --color-base-content: hsl(227deg, 70%, 87%);
+  --color-primary: hsl(267deg, 83%, 80%);
+  --color-primary-content: hsl(232deg, 19%, 18%);
+  --color-secondary: hsl(173deg, 58%, 74%);
+  --color-secondary-content: hsl(232deg, 19%, 18%);
+  --color-accent: hsl(189deg, 70%, 74%);
+  --color-accent-content: hsl(232deg, 19%, 18%);
+  --color-neutral: hsl(230deg, 15%, 26%);
+  --color-neutral-content: hsl(227deg, 70%, 87%);
+  --color-info: hsl(220deg, 91%, 76%);
+  --color-info-content: hsl(232deg, 21%, 12%);
+  --color-success: hsl(120deg, 55%, 76%);
+  --color-success-content: hsl(232deg, 21%, 12%);
+  --color-warning: hsl(30deg, 93%, 74%);
+  --color-warning-content: hsl(232deg, 21%, 12%);
+  --color-error: hsl(343deg, 81%, 75%);
+  --color-error-content: hsl(232deg, 21%, 12%);
+  --radius-selector: 0.5rem;
+  --radius-field: 1.0rem;
+  --radius-box: 0.7rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1.5px;
+  --depth: 0.125rem;
+  --noise: 0;
+}
+
+@plugin "daisyui/theme" {
+  name: "frappe";
+  color-scheme: "dark";
+  --color-base-100: hsl(229deg, 15%, 24%);
+  --color-base-200: hsl(229deg, 15%, 21%);
+  --color-base-300: hsl(229deg, 17%, 18%);
+  --color-base-content: hsl(227deg, 68%, 88%);
+  --color-primary: hsl(268deg, 73%, 79%);
+  --color-primary-content: hsl(229deg, 15%, 24%);
+  --color-secondary: hsl(177deg, 49%, 72%);
+  --color-secondary-content: hsl(229deg, 15%, 24%);
+  --color-accent: hsl(189deg, 61%, 72%);
+  --color-accent-content: hsl(229deg, 15%, 24%);
+  --color-neutral: hsl(226deg, 14%, 31%);
+  --color-neutral-content: hsl(227deg, 68%, 88%);
+  --color-info: hsl(221deg, 83%, 75%);
+  --color-info-content: hsl(229deg, 17%, 18%);
+  --color-success: hsl(122deg, 46%, 75%);
+  --color-success-content: hsl(229deg, 17%, 18%);
+  --color-warning: hsl(35deg, 86%, 73%);
+  --color-warning-content: hsl(229deg, 17%, 18%);
+  --color-error: hsl(343deg, 73%, 74%);
+  --color-error-content: hsl(229deg, 17%, 18%);
+  --radius-selector: 0.5rem;
+  --radius-field: 1.0rem;
+  --radius-box: 0.7rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1.5px;
+  --depth: 0.125rem;
+  --noise: 0;
+}
+
+@plugin "daisyui/theme" {
+  name: "latte";
+  color-scheme: "light";
+  --color-base-100: hsl(220deg, 23%, 95%);
+  --color-base-200: hsl(220deg, 23%, 92%);
+  --color-base-300: hsl(220deg, 25%, 89%);
+  --color-base-content: hsl(234deg, 16%, 35%);
+  --color-primary: hsl(316deg, 73%, 69%);
+  --color-primary-content: hsl(220deg, 23%, 95%);
+  --color-secondary: hsl(183deg, 74%, 35%);
+  --color-secondary-content: hsl(220deg, 23%, 95%);
+  --color-accent: hsl(197deg, 97%, 46%);
+  --color-accent-content: hsl(220deg, 23%, 95%);
+  --color-neutral: hsl(220deg, 13%, 69%);
+  --color-neutral-content: hsl(234deg, 16%, 35%);
+  --color-info: hsl(222deg, 91%, 66%);
+  --color-info-content: hsl(220deg, 23%, 95%);
+  --color-success: hsl(128deg, 55%, 42%);
+  --color-success-content: hsl(220deg, 23%, 95%);
+  --color-warning: hsl(41deg, 89%, 58%);
+  --color-warning-content: hsl(220deg, 23%, 95%);
+  --color-error: hsl(349deg, 81%, 65%);
+  --color-error-content: hsl(220deg, 23%, 95%);
+  --radius-selector: 0.5rem;
+  --radius-field: 1.0rem;
+  --radius-box: 0.7rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1.5px;
+  --depth: 0.25rem;
+  --noise: 0;
+}
+
+
+
+@plugin "daisyui/theme" {
+  name: "surfshark";
   default: false;
   prefersdark: false;
   color-scheme: "dark";
-  --color-base-100: #2e2e2e;
-  --color-base-200: oklch(21% 0.006 56.043);
-  --color-base-300: oklch(37% 0.01 67.558);
-  --color-base-content: oklch(98% 0.003 247.858);
-  --color-primary: oklch(57% 0.245 27.325);
-  --color-primary-content: oklch(93% 0.034 272.788);
-  --color-secondary: oklch(25% 0.092 26.042);
-  --color-secondary-content: oklch(94% 0.028 342.258);
-  --color-accent: oklch(77% 0.152 181.912);
-  --color-accent-content: oklch(38% 0.063 188.416);
-  --color-neutral: oklch(14% 0.005 285.823);
-  --color-neutral-content: oklch(92% 0.004 286.32);
+  --color-base-100: oklch(21% 0.006 285.885);
+  --color-base-200: oklch(14% 0 0);
+  --color-base-300: oklch(27% 0.006 286.033);
+  --color-base-content: oklch(98% 0.014 180.72);
+  --color-primary: #1ebfbf;
+  --color-primary-content: oklch(98% 0.014 180.72);
+  --color-secondary: #2dd4bf;
+  --color-secondary-content: oklch(97% 0.014 254.604);
+  --color-accent: #FA3556;
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: #29baa8;
+  --color-neutral-content: oklch(98% 0.019 200.873);
   --color-info: oklch(74% 0.16 232.661);
   --color-info-content: oklch(29% 0.066 243.157);
-  --color-success: oklch(76% 0.177 163.223);
-  --color-success-content: oklch(37% 0.077 168.94);
+  --color-success: oklch(84% 0.238 128.85);
+  --color-success-content: oklch(27% 0.072 132.109);
   --color-warning: oklch(82% 0.189 84.429);
-  --color-warning-content: oklch(41% 0.112 45.904);
-  --color-error: oklch(71% 0.194 13.428);
-  --color-error-content: oklch(27% 0.105 12.094);
-  --radius-selector: 1rem;
-  --radius-field: 1rem;
+  --color-warning-content: oklch(27% 0.077 45.635);
+  --color-error: oklch(71% 0.202 349.761);
+  --color-error-content: oklch(28% 0.109 3.907);
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
   --radius-box: 1rem;
   --size-selector: 0.25rem;
   --size-field: 0.25rem;
@@ -47,40 +218,9 @@ layer(base);
   --noise: 0;
 }
 
-@plugin "daisyui/theme" {
-  name: "surfshark";
-  default: false;
-  prefersdark: false;
-  color-scheme: "dark";
-  --color-base-100: oklch(37% 0.044 257.287);
-  --color-base-200: #1f2937;
-  --color-base-300: oklch(44% 0.043 257.281);
-  --color-base-content: oklch(97% 0 0);
-  --color-primary: #1ebfbf;
-  --color-primary-content: oklch(27% 0.077 45.635);
-  --color-secondary: #2dd4bf;
-  --color-secondary-content: oklch(27% 0.072 132.109);
-  --color-accent: #00ffff;
-  --color-accent-content: oklch(28% 0.141 291.089);
-  --color-neutral: #6b7280;
-  --color-neutral-content: oklch(98% 0 0);
-  --color-info: oklch(71% 0.143 215.221);
-  --color-info-content: oklch(98% 0.019 200.873);
-  --color-success: oklch(69% 0.17 162.48);
-  --color-success-content: oklch(97% 0.021 166.113);
-  --color-warning: oklch(76% 0.188 70.08);
-  --color-warning-content: oklch(98% 0.022 95.277);
-  --color-error: oklch(63% 0.237 25.331);
-  --color-error-content: oklch(97% 0.013 17.38);
-  --radius-selector: 0.5rem;
-  --radius-field: 0.5rem;
-  --radius-box: 0.5rem;
-  --size-selector: 0.25rem;
-  --size-field: 0.25rem;
-  --border: 1px;
-  --depth: 1;
-  --noise: 0;
-}
+
+
+
 
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,

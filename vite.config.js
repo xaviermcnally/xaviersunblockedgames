@@ -2,7 +2,12 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { ChemicalVitePlugin } from "chemicaljs";
 export default defineConfig({
-  plugins: [react(), ChemicalVitePlugin()],
+  plugins: [react(), ChemicalVitePlugin({
+  default: 'uv',
+  uv: true,
+  scramjet: true,
+  rh: true
+})],
   server: {
     proxy: {
       "/cdn": {
