@@ -9,15 +9,19 @@ import {
 } from "react-icons/lu";
 import { useNavigate } from "react-router-dom";
 import { LucideSquareMousePointer } from "lucide-react";
+import { Helmet } from "react-helmet";
 
 function Go() {
   const navigate = useNavigate();
   const url = sessionStorage.getItem("lpurl");
-  const [searchTerm, setSearchTerm] = useState(sessionStorage.getItem("rawurl") || "");
+  const [searchTerm, setSearchTerm] = useState(
+    sessionStorage.getItem("rawurl") || ""
+  );
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const iframeRef = useRef(null);
   const searchInputRef = useRef(null);
+
   const [isInspectOpen, setisInspectOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -31,13 +35,16 @@ function Go() {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (searchInputRef.current && !searchInputRef.current.contains(event.target)) {
+      if (
+        searchInputRef.current &&
+        !searchInputRef.current.contains(event.target)
+      ) {
         setShowSuggestions(false);
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const fetchSuggestions = async (term) => {
@@ -86,7 +93,7 @@ function Go() {
 
   async function handleSearch() {
     if (!searchTerm.trim()) return;
-    
+
     setIsLoading(true);
     try {
       const encodedResult = await chemical.encode(searchTerm, {
@@ -107,6 +114,7 @@ function Go() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    await handleSearch();
     await handleSearch();
   }
 
@@ -142,6 +150,11 @@ function Go() {
 
   return (
     <>
+      {!localStorage.getItem("cloakFavicon") && (
+        <Helmet>
+          <title>Go - Starlight</title>
+        </Helmet>
+      )}
       <div className="navbar bg-base-300 background-filter z-2 relative transition-all">
         <div className="navbar-start gap-2 flex justify-end mr-5">
           <button className="btn btn-circle btn-soft" onClick={goBack}>
@@ -150,15 +163,16 @@ function Go() {
           <button className="btn btn-circle btn-soft" onClick={goForward}>
             <LuArrowRight size={24} />
           </button>
-          <button
-            className="btn btn-circle btn-soft"
-            onClick={refreshIframe}
-          >
+          <button className="btn btn-circle btn-soft" onClick={refreshIframe}>
             <LuRotateCw size={24} />
           </button>
         </div>
         <div className="navbar-center gap-2">
-          <form onSubmit={handleSubmit} className="join relative" ref={searchInputRef}>
+          <form
+            onSubmit={handleSubmit}
+            className="join relative"
+            ref={searchInputRef}
+          >
             <input
               type="text"
               className="input transition-width duration-300 w-[400px] focus:w-[420px] focus:input-primary join-item"
@@ -168,7 +182,7 @@ function Go() {
               onFocus={() => searchTerm.trim() && setShowSuggestions(true)}
             />
             <button type="submit" className="join-item btn btn-primary">
-              <LuSearch size={24}/>
+              <LuSearch size={24} />
             </button>
             {showSuggestions && suggestions.length > 0 && (
               <div className="absolute top-full left-0 w-full mt-1 bg-base-200 rounded-lg shadow-lg z-50">
@@ -195,12 +209,10 @@ function Go() {
           >
             <LuHome size={24} />
           </button>
-          <button
-            className="btn btn-circle btn-soft"
-            onClick={enterFullscreen}
-          >
+          <button className="btn btn-circle btn-soft" onClick={enterFullscreen}>
             <LuMaximize size={24} />
           </button>
+
           <button className="btn btn-circle btn-soft" onClick={inspect}>
             <LucideSquareMousePointer />
           </button>
@@ -213,6 +225,12 @@ function Go() {
           frameBorder="0"
           className="w-full h-full z-1 fixed"
         ></iframe>
+        {isLoading && (
+          <div className="flex items-center justify-center fixed top-0 left-0 right-0 bottom-0 flex-col">
+            <span className="loading loading-spinner text-primary text-7xl w-16"></span>
+            <h1 className="text-3xl mt-3">Loading</h1>
+          </div>
+        )}
         {isLoading && (
           <div className="flex items-center justify-center fixed top-0 left-0 right-0 bottom-0 flex-col">
             <span className="loading loading-spinner text-primary text-7xl w-16"></span>

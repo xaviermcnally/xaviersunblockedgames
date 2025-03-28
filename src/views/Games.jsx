@@ -7,6 +7,7 @@ import "react-lazy-load-image-component/src/effects/opacity.css";
 import { BannerAd, NativeBannerAd } from "../components/Ad";
 import { useNavigate } from "react-router-dom";
 import { LuGamepad2 } from "react-icons/lu";
+import { Helmet } from "react-helmet";
 
 function Games() {
   const navigate = useNavigate();
@@ -40,6 +41,12 @@ function Games() {
 
   return (
     <>
+      {!localStorage.getItem("cloakFavicon") && (
+        <Helmet>
+          <title>Games - Starlight</title>
+        </Helmet>
+      )}
+
       <div className="flex flex-col justify-center items-center">
         <LuGamepad2 size={35} className="m-2" />
         <h1 className="text-3xl font-bold">Games</h1>

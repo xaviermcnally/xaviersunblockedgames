@@ -1,13 +1,15 @@
 import { useEffect, useState, useRef } from "react";
+
 import { LuSearch } from "react-icons/lu";
 import { useNavigate } from "react-router-dom";
 import { BannerAd, NativeBannerAd } from "../components/Ad";
-
+import { Helmet } from "react-helmet";
 function Search() {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+
   const [time, setTime] = useState(new Date().toLocaleTimeString());
   const searchInputRef = useRef(null);
   const apps = [
@@ -80,13 +82,16 @@ function Search() {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (searchInputRef.current && !searchInputRef.current.contains(event.target)) {
+      if (
+        searchInputRef.current &&
+        !searchInputRef.current.contains(event.target)
+      ) {
         setShowSuggestions(false);
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const fetchSuggestions = async (term) => {
@@ -146,68 +151,89 @@ function Search() {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center">
-      <BannerAd />
-      <h1 className="text-7xl font-bold transition-all">{time}</h1>
-      <form onSubmit={handleOnSubmit} className="join items-center mt-5 relative" ref={searchInputRef}>
-        <div className="join-item btn btn-lg btn-primary">
-          <img
-            src={
-              localStorage.getItem("searchEngineFavicon") ||
-              "/media/apps/google.png"
-            }
-            alt=""
-            className="w-[25px]"
-          />
-        </div>
-        <input
-          value={searchTerm}
-          onChange={handleInputChange}
-          onFocus={() => searchTerm.trim() && setShowSuggestions(true)}
-          type="text"
-          className="input input-bordered input-lg transition-width duration-300 w-[500px] focus:w-[520px] focus:input-primary join-item"
-          placeholder={`Search The web with ${localStorage.getItem("searchEngine") === "bing" ? "Bing" : localStorage.getItem("searchEngine") === "google" ? "Google" : localStorage.getItem("searchEngine") === "ddg" ? "DuckDuckGo" : localStorage.getItem("searchEngine") === "brave" ? "Brave" : localStorage.getItem("searchEngine")}`}
-        />
-        <button
-          className="btn btn-lg btn-primary join-item rounded-r-field"
-          type="submit"
+    <>
+      {!localStorage.getItem("cloakFavicon") && (
+        <Helmet>
+          <title>Search - Starlight</title>
+        </Helmet>
+      )}
+      <div className="flex flex-col justify-center items-center">
+        <BannerAd />
+        <h1 className="text-7xl font-bold transition-all">{time}</h1>
+        <form
+          onSubmit={handleOnSubmit}
+          className="join items-center mt-5 relative"
+          ref={searchInputRef}
         >
-          <LuSearch size={24} />
-        </button>
-        {showSuggestions && suggestions.length > 0 && (
-          <div className="absolute top-full left-0 w-full mt-1 bg-base-200 rounded-lg shadow-lg z-50">
-            <ul className="menu w-full">
-              {suggestions.map((suggestion, index) => (
-                <li key={index} className="w-full">
-                  <button
-                    className="text-left px-4 py-2 hover:bg-base-300 w-full"
-                    onClick={() => handleSuggestionClick(suggestion)}
-                  >
-                    {suggestion}
-                  </button>
-                </li>
-              ))}
-            </ul>
+          <div className="join-item btn btn-lg btn-primary">
+            <img
+              src={
+                localStorage.getItem("searchEngineFavicon") ||
+                "/media/apps/google.png"
+              }
+              alt=""
+              className="w-[25px]"
+            />
           </div>
-        )}
-      </form>
-      <div className="flex mt-6 flex-wrap justify-center gap-5 w-[700px]">
-        {apps.map((app, index) => {
-          return (
-            <button
-              onClick={() => handleButton(app.link)}
-              key={index}
-              className="btn flex flex-col btn-ghost justify-center items-center h-[100px] w-[100px]"
-            >
-              <div className="flex flex-col justify-center items-center">
-                <img src={`${app.image}`} alt="" className="w-7 mb-3" />
-                {app.name}
-              </div>
-            </button>
-          );
-        })}
+          <input
+            value={searchTerm}
+            onChange={handleInputChange}
+            onFocus={() => searchTerm.trim() && setShowSuggestions(true)}
+            type="text"
+            className="input input-bordered input-lg transition-width duration-300 w-[500px] focus:w-[520px] focus:input-primary join-item"
+            placeholder={`Search The web with ${
+              localStorage.getItem("searchEngine") === "bing"
+                ? "Bing"
+                : localStorage.getItem("searchEngine") === "google"
+                ? "Google"
+                : localStorage.getItem("searchEngine") === "ddg"
+                ? "DuckDuckGo"
+                : localStorage.getItem("searchEngine") === "brave"
+                ? "Brave"
+                : localStorage.getItem("searchEngine")
+            }`}
+          />
+          <button
+            className="btn btn-lg btn-primary join-item rounded-r-field"
+            type="submit"
+          >
+            <LuSearch size={24} />
+          </button>
+          {showSuggestions && suggestions.length > 0 && (
+            <div className="absolute top-full left-0 w-full mt-1 bg-base-200 rounded-lg shadow-lg z-50">
+              <ul className="menu w-full">
+                {suggestions.map((suggestion, index) => (
+                  <li key={index} className="w-full">
+                    <button
+                      className="text-left px-4 py-2 hover:bg-base-300 w-full"
+                      onClick={() => handleSuggestionClick(suggestion)}
+                    >
+                      {suggestion}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </form>
+        <div className="flex mt-6 flex-wrap justify-center gap-5 w-[700px]">
+          {apps.map((app, index) => {
+            return (
+              <button
+                onClick={() => handleButton(app.link)}
+                key={index}
+                className="btn flex flex-col btn-ghost justify-center items-center h-[100px] w-[100px]"
+              >
+                <div className="flex flex-col justify-center items-center">
+                  <img src={`${app.image}`} alt="" className="w-7 mb-3" />
+                  {app.name}
+                </div>
+              </button>
+            );
+          })}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
