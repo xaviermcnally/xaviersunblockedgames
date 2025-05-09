@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar.jsx";
 import Home from "./views/Home.jsx";
 import { useRecoilValue } from "recoil";
 import Atom from "./lib/Atom.js";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Nopage from "./views/Nopage.jsx";
 import Settings from "./views/Settings.jsx";
 import Games from "./views/Games.jsx";

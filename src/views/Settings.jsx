@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 import Atom from "../lib/Atom.js";
-import { BannerAd, NativeBannerAd } from "../components/Ad.jsx";
-import { LuInfo, LuSettings } from "react-icons/lu";
+import { BannerAd } from "../components/Ad.jsx";
+import { LuSettings } from "react-icons/lu";
 import { Helmet } from "react-helmet";
+
+export const searchEngines = {
+  google: "https://www.google.com/search?q=%s",
+  bing: "https://www.bing.com/search?q=%s",
+  ddg: "https://duckduckgo.com/?q=%s",
+  brave: "https://search.brave.com/search?q=%s",
+};
+
 function Settings() {
   const setTheme = useSetRecoilState(Atom);
   const [selectedCloak, setSelectedCloak] = useState("default");
@@ -43,13 +51,6 @@ function Settings() {
     const faviconPath = `/media/cloaks/${newEngine}.png`;
     localStorage.setItem("searchEngineFavicon", faviconPath);
 
-    const searchEngines = {
-      google: "https://www.google.com/search?q=%s",
-      bing: "https://www.bing.com/search?q=%s",
-      ddg: "https://duckduckgo.com/?q=%s",
-      brave: "https://search.brave.com/search?q=%s",
-    };
-
     chemical.setStore("searchEngine", searchEngines[newEngine]);
   };
 
@@ -84,10 +85,6 @@ function Settings() {
         <LuSettings size={35} className="m-2" />
         <h1 className="text-3xl font-bold mb-3">Settings</h1>
         <BannerAd />
-        <div className="alert alert-info">
-          <LuInfo />
-          some themes are disabled or different due to a rework
-        </div>
         <div className="flex flex-wrap gap-4 justify-center m-[100px]">
           <Card title="Themes" description="Change the theme on Starlight.">
             <select
@@ -99,15 +96,13 @@ function Settings() {
               <option value="light">Light</option>
               <option value="youtube">Youtube</option>
               <option value="surfshark">Surfshark Blue</option>
-              <option value="mocha">Catppuccin Mocha</option>
+              <option value="mocha">Catppuccin Mocha / Parcoil Theme</option>
               <option value="macchiato">Catppuccin Macchiato</option>
               <option value="latte">Catppuccin Latte</option>
               <option value="frappe">Catppuccin Frappe</option>
               <option value="dark">Dark</option>
               <option value="cupcake">Cupcake</option>
-              <option value="lunaar" disabled>
-                Lunaar
-              </option>
+              <option value="lunaar">Lunaar</option>
               <option value="bumblebee">Bumblebee</option>
               <option value="emerald">Emerald</option>
               <option value="corporate">Corporate</option>
@@ -156,7 +151,6 @@ function Settings() {
                 Reset Cloak
               </button>
             </div>
-            {/* Positioning the link at the bottom */}
             <div className="mt-auto text-center pt-3">
               <a
                 className="text-xs text-neutral-content opacity-40"

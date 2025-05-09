@@ -4,10 +4,11 @@ import Fuse from "fuse.js";
 import { useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/opacity.css";
-import { BannerAd, NativeBannerAd } from "../components/Ad";
+import { BannerAd } from "../components/Ad";
 import { useNavigate } from "react-router-dom";
 import { LuGamepad2 } from "react-icons/lu";
 import { Helmet } from "react-helmet";
+import { Suspense } from "react";
 
 function Games() {
   const navigate = useNavigate();
@@ -58,7 +59,8 @@ function Games() {
           onChange={handleOnSearch}
         />
         <BannerAd />
-        <div className="games flex flex-wrap m-0 justify-center gap-4 mt-5">
+
+        <div className="games flex flex-wrap m-0 justify-center gap-4 mt-5 ">
           {filteredGames.map((game) => {
             const gameImage = game.proxy
               ? `/media/games/${game.image}`
@@ -66,7 +68,7 @@ function Games() {
 
             return (
               <div
-                className="game card  flex flex-col justify-center items-center"
+                className="card flex flex-col justify-center items-center flex-shrink-0 w-[200px] h-[300px] "
                 key={game.name}
               >
                 <LazyLoadImage
@@ -92,6 +94,12 @@ function Games() {
               </div>
             );
           })}
+          {filteredGames.length === 0 && (
+            <div className="flex flex-col items-center justify-center">
+              <p className="text-2xl font-bold">No games found</p>
+              <p className="text-lg">Try searching for something else.</p>
+            </div>
+          )}
         </div>
       </div>
     </>
